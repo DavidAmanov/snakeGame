@@ -51,10 +51,18 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
         const newSegment = { ...state.body[state.body.length - 1] };
         state.body.push(newSegment); 
       }, 
+      gameRestart(state){
+        state.gameStatus = 'restart';
+        if(state.gameStatus === 'restart'){
+          state.body = [{ x: 1, y: 1 }];
+          state.direction = 'd';
+          state.gameStatus = "play";
+        }
+      }
     }
   });
   
-  export const { move, incrementSnakeSize} = snakeSlice.actions;
+  export const { move, incrementSnakeSize, gameRestart} = snakeSlice.actions;
   export default snakeSlice.reducer;
 
 

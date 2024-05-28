@@ -3,7 +3,7 @@ import './Field.css'
 import Snake from "../Snake/Snake";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { move, incrementSnakeSize} from "../../store/snakeSlice";
+import { move, incrementSnakeSize, gameRestart} from "../../store/snakeSlice";
 import Apple from "../Apple/Apple";
 import { randomApplePosition } from "../../store/appleSlice";
 
@@ -42,6 +42,10 @@ const Field = () => {
 
     }, [dispatch])
 
+    const handleGameStatus = useCallback(()=>{
+        dispatch(gameRestart())
+    }, [dispatch])
+
     useEffect(() => {
         if (status === 'Pause') {
           const intervalId = setInterval(() => {
@@ -68,32 +72,28 @@ const Field = () => {
         }
     }, [position.x, applePosition.x, position.y, applePosition.y, dispatch]);
 
-    // useEffect(()=>{
-    //     dispatch(gameOver(position))
-    //     // console.log("snake" , position, "apple", applePosition)
-    //     if(gameStatus==='lose'){
-    //         setStatus('Pause')
-    //     }
-    // }, [position, applePosition, dispatch, gameStatus])
 
     return (
+        <>
         <div className="fieldContainer">
-        <div className="field">
-            {fieldId.map((square => {
-        return (
-          <span key={square.index}></span>)}))}
-        <Snake/>
-        <Apple />
-        </div>
-        <div className="btnContainer">
-            <button onClick={()=>handleStatus(status)}>{status}</button>
+            <div className="field">
+                {fieldId.map((square => {
+            return (
+            <span className='cellOfField' key={square.index}>
+            </span>)}))}
+                <Apple />
+                <Snake/>
+            </div>
+            <div className="btnContainer">
+                <button onClick={()=>handleStatus(status)}>{status}</button>
+            </div>
         </div>
         {gameStatus==='lose' 
-        && <div>
-            You lose!
-            <button >Restart</button>
+        && <div className="restartContainer">
+                <span>You lose!</span>
+                <button style={{fontSize: '42px', width: '40vh', height: '10vh'}} onClick={handleGameStatus}>Restart</button>
             </div>}
-        </div>
+        </>
     );
 }
 
