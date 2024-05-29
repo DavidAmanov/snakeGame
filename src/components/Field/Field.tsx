@@ -1,11 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import './Field.css' 
-import Snake from "../Snake/Snake";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { move, incrementSnakeSize, gameRestart} from "../../store/snakeSlice";
-import Apple from "../Apple/Apple";
 import { randomApplePosition } from "../../store/appleSlice";
+import Square from "../Square/Square";
 
 const Field = () => {
     const [status, setStatus] = useState('Start')
@@ -20,9 +19,16 @@ const Field = () => {
             setStatus('Pause')
     }
 
-    const fieldId = [];
-    for (let y = 0; y < 8; y++) {
-        for (let x = 0; x < 8; x++) {
+    
+    interface item {
+        x: number;
+        y: number;
+        index: string;
+    }
+    
+    const fieldId: item[] = [];
+    for (let y = 1; y < 9; y++) {
+        for (let x = 1; x < 9; x++) {
             fieldId.push({ x, y, index: '' + x + y});
         }
       }
@@ -77,12 +83,9 @@ const Field = () => {
         <>
         <div className="fieldContainer">
             <div className="field">
-                {fieldId.map((square => {
+                {fieldId.map((item => {
             return (
-            <span className='cellOfField' key={square.index}>
-            </span>)}))}
-                <Apple />
-                <Snake/>
+                <Square item={item} key={item.index} />)}))}
             </div>
             <div className="btnContainer">
                 <button onClick={()=>handleStatus(status)}>{status}</button>

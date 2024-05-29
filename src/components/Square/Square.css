@@ -1,0 +1,18 @@
+.cellOfField{
+    border: solid 2px;
+    border-color: aqua;
+}
+
+
+.snake{
+    width: 100%;
+    height: 100%;
+    background-color: tomato;
+}
+
+
+.apple{
+    width: 100%;
+    height: 100%;
+    background-color: green;
+}

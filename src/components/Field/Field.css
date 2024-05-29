@@ -17,10 +17,6 @@
     /* grid-template-rows: repeat(8, 1fr); */
 }
 
-.cellOfField{
-    border: solid 2px;
-    border-color: aqua;
-}
 
 .btnContainer{
     display: flex;
