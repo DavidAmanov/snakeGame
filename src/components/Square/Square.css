@@ -1,18 +1,56 @@
 .cellOfField{
-    border: solid 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 95%;
+    border: solid 1px;
+    border-radius: 0.5em;
     border-color: aqua;
+    animation: slideIn 0.5s forwards;
 }
 
 
 .snake{
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     background-color: tomato;
+    border-radius: 0.5em;
+    opacity: 0; 
+    animation: appear 0.5s forwards;
+    animation-delay: 7s; 
+
 }
 
 
 .apple{
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     background-color: green;
+    border-radius: 0.5em;
+    opacity: 0; 
+    animation: appear 0.5s forwards;
+    animation-delay: 7.5s; 
+}
+
+
+
+@keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+}
+  
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

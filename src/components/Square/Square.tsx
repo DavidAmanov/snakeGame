@@ -11,7 +11,7 @@ interface item {
     index: string;}
 }
 
-const Square = ({item}: item) => {
+const Square = ({ item, className }: { item: any; className?: string }) => {
     const x: number = item.x
     const y: number = item.y
     const snakeBody = useSelector((state: RootState) => state.snakeMove.body);
@@ -29,7 +29,7 @@ const Square = ({item}: item) => {
     }
     return(
         <>
-            <span className="cellOfField">
+            <span className={`cellcellOfField ${className}`}>
                 <div className={style}></div>
             </span>
         </>

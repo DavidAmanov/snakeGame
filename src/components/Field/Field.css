@@ -3,18 +3,19 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 90vh;
+    width: 90vh;
   }
 
 .field{
-    width: 75vh;
-    height: 75vh;
+    width: 75%;
+    height: 75%;
     border: solid 2px;
-    border-color: aqua;
+    border-color: violet;
+    padding: 2%;
     border-radius: 0.5em;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    /* grid-template-rows: repeat(8, 1fr); */
 }
 
 
@@ -44,7 +45,7 @@ button{
     left: 50%;
     width: 0;
     height: 0;
-    background-color: rgb(173, 16, 16); /* Circle color */
+    background-color: rgb(173, 16, 16); 
     transform: translate(-50%, -50%);
     animation: expandCircle 2s forwards;
     font-size: 42px;
@@ -62,3 +63,5 @@ button{
         opacity: 1;
     }
 }
+
+

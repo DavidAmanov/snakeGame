@@ -9,6 +9,7 @@ import Square from "../Square/Square";
 const Field = () => {
     const [status, setStatus] = useState('Start')
     const [direction, setDirection] = useState('d')
+    const [visibleSquares, setVisibleSquares] = useState<number>(0);
 
     const handleStatus = (value: string)=> {
         if(value === 'Start')
@@ -78,14 +79,22 @@ const Field = () => {
         }
     }, [position.x, applePosition.x, position.y, applePosition.y, dispatch]);
 
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setVisibleSquares((prev) => prev + 1);
+        }, 100); 
+        return () => clearInterval(intervalId);
+    }, []);
+
 
     return (
         <>
         <div className="fieldContainer">
             <div className="field">
-                {fieldId.map((item => {
+                {fieldId.map((item, index) => {
             return (
-                <Square item={item} key={item.index} />)}))}
+                <Square item={item} key={item.index} className={visibleSquares > index ? 'cellOfField' : ''}/>)})}
+
             </div>
             <div className="btnContainer">
                 <button onClick={()=>handleStatus(status)}>{status}</button>
