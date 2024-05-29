@@ -18,8 +18,7 @@
     border-radius: 0.5em;
     opacity: 0; 
     animation: appear 0.5s forwards;
-    animation-delay: 7s; 
-
+    animation-delay: 0.5s; 
 }
 
 
@@ -30,7 +29,7 @@
     border-radius: 0.5em;
     opacity: 0; 
     animation: appear 0.5s forwards;
-    animation-delay: 7.5s; 
+    animation-delay: 0.5s; 
 }
 
 

@@ -10,6 +10,7 @@ const Field = () => {
     const [status, setStatus] = useState('Start')
     const [direction, setDirection] = useState('d')
     const [visibleSquares, setVisibleSquares] = useState<number>(0);
+    const [animationCompleted, setAnimationCompleted] = useState(false);
 
     const handleStatus = (value: string)=> {
         if(value === 'Start')
@@ -82,9 +83,15 @@ const Field = () => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             setVisibleSquares((prev) => prev + 1);
-        }, 100); 
+        }, 100); // Adjust the delay as needed
+
+        if (visibleSquares >= fieldId.length) {
+            clearInterval(intervalId);
+            setTimeout(() => setAnimationCompleted(true), 500); 
+        }
+
         return () => clearInterval(intervalId);
-    }, []);
+    }, [visibleSquares, fieldId.length]);
 
 
     return (
@@ -93,7 +100,7 @@ const Field = () => {
             <div className="field">
                 {fieldId.map((item, index) => {
             return (
-                <Square item={item} key={item.index} className={visibleSquares > index ? 'cellOfField' : ''}/>)})}
+                <Square item={item} key={item.index} className={visibleSquares > index ? 'cellOfField' : '' } animationCompleted={animationCompleted}/>)})}
 
             </div>
             <div className="btnContainer">
