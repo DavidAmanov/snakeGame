@@ -16,6 +16,7 @@
     border-radius: 0.5em;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
+    animation: draw 5s forwards;
 }
 
 
@@ -30,9 +31,12 @@
 button{
     width: 100vh;
     height: 6vh;
-    border-color: antiquewhite;
-    background-color: aquamarine;
+    border-color: blueviolet;
+    background-color: blueviolet;
     border-radius: 0.5em;
+    font-size: 24px;
+    color: white;
+    animation: slideOn 0.5s forwards;
 }
 
 .restartContainer{
@@ -45,11 +49,40 @@ button{
     left: 50%;
     width: 0;
     height: 0;
-    background-color: rgb(173, 16, 16); 
+    background-color: aqua; 
     transform: translate(-50%, -50%);
     animation: expandCircle 2s forwards;
-    font-size: 42px;
 }
+
+.youLose{
+    font-size: 42px;
+    color: blueviolet;
+}
+
+.youLose span {
+    display: inline-block;
+    animation: wave 2s infinite;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.youLose span:nth-child(1) { --i: 0; }
+.youLose span:nth-child(2) { --i: 1; }
+.youLose span:nth-child(3) { --i: 2; }
+.youLose span:nth-child(4) { --i: 3; }
+.youLose span:nth-child(5) { --i: 4; }
+.youLose span:nth-child(6) { --i: 5; }
+.youLose span:nth-child(7) { --i: 6; }
+.youLose span:nth-child(8) { --i: 7; }
+.youLose span:nth-child(9) { --i: 8; }
 
 @keyframes expandCircle {
     0% {
@@ -65,3 +98,53 @@ button{
 }
 
 
+@keyframes draw {
+    0% {
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+    10% {
+        border-top-color: violet;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+    25% {
+        border-top-color: violet;
+        border-right-color: violet;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+    50% {
+        border-top-color: violet;
+        border-right-color: violet;
+        border-bottom-color: violet;
+        border-left-color: transparent;
+    }
+    75% {
+        border-top-color: violet;
+        border-right-color: violet;
+        border-bottom-color: violet;
+        border-left-color: violet;
+    }
+    100% {
+        border-top-color: violet;
+        border-right-color: violet;
+        border-bottom-color: violet;
+        border-left-color: violet;
+    }
+}
+
+
+@keyframes slideOn {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+}

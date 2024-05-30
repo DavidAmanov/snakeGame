@@ -109,8 +109,17 @@ const Field = () => {
         </div>
         {gameStatus==='lose' 
         && <div className="restartContainer">
-                <span>You lose!</span>
-                <button style={{fontSize: '42px', width: '40vh', height: '10vh'}} onClick={handleGameStatus}>Restart</button>
+                <div className="youLose">
+                    <span>Y</span>
+                    <span>o</span>
+                    <span>u</span>
+                    <span>l</span>
+                    <span>o</span>
+                    <span>s</span>
+                    <span>e</span>
+                    <span>!</span>
+                </div>
+                <button style={{fontSize: '42px', width: '40vh', height: '10vh', margin: '1vh'}} onClick={handleGameStatus}>Restart</button>
             </div>}
         </>
     );

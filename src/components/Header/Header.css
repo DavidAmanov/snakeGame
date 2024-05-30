@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: slideOn 0.5s forwards;
 }   
 
 .wave{
@@ -44,3 +45,14 @@
 .wave span:nth-child(7) { --i: 6; }
 .wave span:nth-child(8) { --i: 7; }
 .wave span:nth-child(9) { --i: 8; }
+
+@keyframes slideOn {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+}
