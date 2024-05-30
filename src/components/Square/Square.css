@@ -17,8 +17,8 @@
     background-color: tomato;
     border-radius: 0.5em;
     opacity: 0; 
-    animation: appear 0.5s forwards;
-    animation-delay: 0.5s; 
+    animation: appear 0.2s forwards;
+    animation-delay: 0.05s; 
 }
 
 

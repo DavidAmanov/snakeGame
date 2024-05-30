@@ -83,7 +83,7 @@ const Field = () => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             setVisibleSquares((prev) => prev + 1);
-        }, 100); // Adjust the delay as needed
+        }, 100); 
 
         if (visibleSquares >= fieldId.length) {
             clearInterval(intervalId);
